@@ -813,6 +813,12 @@ int CDECL __stdio_common_vswprintf(unsigned __int64 options, wchar_t *str, size_
     return vswprintf_helper(QEMU_SYSCALL_ID(CALL_SWPRINTF_UCRTBASE), str, len, 0, format, options, locale, list);
 }
 
+int CDECL __stdio_common_vswprintf_s(unsigned __int64 options, wchar_t *str, size_t len, const wchar_t *format,
+        _locale_t locale, va_list list)
+{
+    return vswprintf_helper(QEMU_SYSCALL_ID(CALL_SWPRINTF_S_UCRTBASE), str, len, 0, format, options, locale, list);
+}
+
 int WINAPIV MSVCRT_sprintf(char *str, const char *format, ...)
 {
     int ret;
@@ -981,6 +987,10 @@ static uint64_t WINAPIV sprintf_wrapper(void *ctx, ...)
 
         case QEMU_SYSCALL_ID(CALL_SWPRINTF_UCRTBASE):
             ret = p___stdio_common_vswprintf(data->options, data->dst, data->len, data->fmt, data->locale, list);
+            break;
+            
+        case QEMU_SYSCALL_ID(CALL_SWPRINTF_S_UCRTBASE):
+            ret = p___stdio_common_vswprintf_s(data->options, data->dst, data->len, data->fmt, data->locale, list);
             break;
     }
     __ms_va_end(list);

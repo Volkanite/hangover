@@ -1012,6 +1012,7 @@ enum msvcrt_calls
     CALL_STRXFRM,
     CALL_SWPRINTF_S,
     CALL_SWPRINTF_UCRTBASE,
+    CALL_SWPRINTF_S_UCRTBASE,
     CALL_SWSCANF_S,
     CALL_SYSTEM,
     CALL_TAN,
@@ -3374,6 +3375,8 @@ wchar_t ***p___wargv;
 int (* CDECL p___stdio_common_vsprintf)( unsigned __int64 options, char *str, size_t len, const char *format,
     MSVCRT__locale_t locale, __ms_va_list valist);
 int (* CDECL p___stdio_common_vswprintf)( unsigned __int64 options, wchar_t *str, size_t len, const wchar_t *format,
+    MSVCRT__locale_t locale, __ms_va_list valist);
+int (* CDECL p___stdio_common_vswprintf_s)( unsigned __int64 options, wchar_t *str, size_t len, const wchar_t *format,
     MSVCRT__locale_t locale, __ms_va_list valist);
 int *p___mb_cur_max;
 int (* CDECL p___stdio_common_vfprintf)(unsigned __int64 options, MSVCRT_FILE *file, const char *format,

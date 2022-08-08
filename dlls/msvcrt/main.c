@@ -320,6 +320,7 @@ static void qemu_init_dll(struct qemu_syscall *call)
         p___stdio_common_vsprintf = (void *)GetProcAddress(msvcrt, "__stdio_common_vsprintf");
         p___stdio_common_vsscanf = (void *)GetProcAddress(msvcrt, "__stdio_common_vsscanf");
         p___stdio_common_vswprintf = (void *)GetProcAddress(msvcrt, "__stdio_common_vswprintf");
+        p___stdio_common_vswprintf_s = (void *)GetProcAddress(msvcrt, "__stdio_common_vswprintf_s");
         p___STRINGTOLD = (void *)GetProcAddress(msvcrt, "__STRINGTOLD");
         p___sys_errlist = (void *)GetProcAddress(msvcrt, "__sys_errlist");
         p___sys_nerr = (void *)GetProcAddress(msvcrt, "__sys_nerr");
